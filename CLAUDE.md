@@ -15,6 +15,7 @@ Stack: Node 20+ (ESM), Express 5, Postgres (`pg`), `@anthropic-ai/sdk`, vanilla 
 - `npm install`
 - `npm run dev`: runs with `--watch`, loads `.env` if present
 - `npm start`: production start (used by Railway)
+- `npm test`: unit tests for `context.js` (Node's built-in test runner, no extra dependencies)
 - Health check: `GET /health`
 
 Required env vars: `ANTHROPIC_API_KEY`, `DATABASE_URL`, `APP_PASSWORD`. Optional: `CHAT_MODEL` (default `claude-sonnet-5`), `SUMMARY_MODEL` (default `claude-haiku-4-5-20251001`), `MAX_TOKENS` (default 4096). See `.env.example`.
