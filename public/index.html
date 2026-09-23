@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Threadline</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M11 3v26M11 12c0 5 4 7 10 7' stroke='%232E6B57' stroke-width='3.5' fill='none' stroke-linecap='round'/><circle cx='22' cy='19' r='3.5' fill='%239A6A12'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" id="sidebar" aria-label="Conversations">
+      <div class="sidebar-head">
+        <span class="wordmark">Threadline</span>
+        <button class="btn btn-primary" id="new-conv">New chat</button>
+      </div>
+      <nav class="conv-list" id="conv-list"></nav>
+    </aside>
+
+    <main class="trunk" id="trunk" aria-label="Main conversation">
+      <header class="trunk-head">
+        <button class="icon-btn menu-btn" id="menu-btn" aria-label="Show conversations">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <h1 class="trunk-title" id="trunk-title">Threadline</h1>
+      </header>
+      <div class="scroller" id="trunk-scroller">
+        <ol class="rail" id="trunk-list"></ol>
+        <div class="empty" id="trunk-empty">
+          <p class="empty-lead">Start a conversation.</p>
+          <p>Hover any message and choose <strong>Reply in thread</strong> to branch off a side discussion. Threads don't add to the main conversation's context until you graft them back in.</p>
+        </div>
+      </div>
+      <form class="composer" id="trunk-composer">
+        <textarea rows="1" placeholder="Message Claude" aria-label="Message Claude"></textarea>
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+    </main>
+
+    <aside class="thread" id="thread" aria-label="Thread" hidden>
+      <header class="thread-head">
+        <h2>Thread</h2>
+        <button class="icon-btn" id="thread-close" aria-label="Close thread">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <div class="scroller" id="thread-scroller">
+        <div class="anchor" id="thread-anchor"></div>
+        <ol class="thread-list" id="thread-list"></ol>
+      </div>
+      <div class="graft-bar">
+        <button class="btn btn-graft" id="graft-btn" disabled>Graft into main conversation</button>
+      </div>
+      <form class="composer" id="thread-composer">
+        <textarea rows="1" placeholder="Reply in thread" aria-label="Reply in thread"></textarea>
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+    </aside>
+  </div>
+
+  <div class="login" id="login" hidden>
+    <form class="login-card" id="login-form">
+      <h2>Enter your password</h2>
+      <p>This is the <code>APP_PASSWORD</code> you set on Railway.</p>
+      <input type="password" id="login-input" autocomplete="current-password" aria-label="Password" required>
+      <p class="login-error" id="login-error" role="alert"></p>
+      <button class="btn btn-primary" type="submit">Unlock</button>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/vendor/marked.umd.js"></script>
+  <script src="/vendor/purify.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

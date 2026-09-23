@@ -1,0 +1,19 @@
+{
+  "name": "threadline",
+  "version": "0.1.0",
+  "description": "Claude chat with Slack-style threads and grafting",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch --env-file-if-exists=.env server.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.128.0",
+    "dompurify": "^3.4.15",
+    "express": "^5.2.1",
+    "marked": "^18.0.14",
+    "pg": "^8.23.0"
+  }
+}
